@@ -1,6 +1,10 @@
-# 子网扫描器与代理测试工具 (Subnet Scanner)
+![subnet scanner](banner.png)
 
-[![许可证: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<div align="center">
+  <a href="./LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+  <a href="./README.md"><img alt="README in English" src="https://img.shields.io/badge/English-d9d9d9"></a>
+  <a href="./README.zh-CN.md"><img alt="简体中文版自述文件" src="https://img.shields.io/badge/简体中文-d9d9d9"></a>
+</div>
 
 一款使用 Rust 编写的高性能、异步、多线程的工具，用于扫描指定子网的开放端口，并将其作为 HTTP 代理进行连接测试。它还集成了 Geo-IP 地理位置查询和灵活的输入/输出选项。
 

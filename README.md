@@ -1,6 +1,10 @@
-# Subnet Scanner & Proxy Tester
+![subnet scanner](banner.png)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<div align="center">
+  <a href="./LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+  <a href="./README.md"><img alt="README in English" src="https://img.shields.io/badge/English-d9d9d9"></a>
+  <a href="./README.zh-CN.md"><img alt="简体中文版自述文件" src="https://img.shields.io/badge/简体中文-d9d9d9"></a>
+</div>
 
 A high-performance, asynchronous, and multi-threaded tool written in Rust to scan subnets for open ports and test them as HTTP proxies. It includes Geo-IP location lookups and flexible input/output options.
 
