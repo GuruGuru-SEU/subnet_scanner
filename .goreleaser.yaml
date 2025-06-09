@@ -1,0 +1,31 @@
+version: 2
+
+before:
+  hooks:
+    - rustup default stable
+    - cargo install --locked cargo-zigbuild
+builds:
+  - id: "subnet_scanner-build"
+    builder: rust
+    targets:
+      - "x86_64-apple-darwin"
+      - "x86_64-pc-windows-gnu"
+      - "aarch64-apple-darwin"
+      - "x86_64-unknown-linux-musl"
+      - "aarch64-unknown-linux-musl"
+
+nfpms:
+  - builds:
+      - "subnet_scanner-build"
+    vendor: GuruGuru-SEU
+    homepage: "https://github.com/GuruGuru-SEU/subnet_scanner"
+    maintainer: "tth37 <xgpsthd0902@outlook.com>"
+    description: "A high-performance, asynchronous, and multi-threaded tool written in Rust to scan subnets for open ports and test them as HTTP proxies."
+    license: MIT
+    formats:
+      - apk
+      - deb
+      - rpm
+      - archlinux
+
+    bindir: /usr/bin

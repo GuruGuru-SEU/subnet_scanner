@@ -33,7 +33,7 @@ You need to have the Rust toolchain installed. If you don't have it, you can get
 1.  **Clone the repository:**
 
     ```bash
-    git clone <your-repo-url>
+    git clone https://github.com/GuruGuru-SEU/subnet_scanner.git
     cd subnet_scanner
     ```
 

@@ -32,7 +32,7 @@
 
 1.  **克隆代码仓库:**
     ```bash
-    git clone <your-repo-url>
+    git clone https://github.com/GuruGuru-SEU/subnet_scanner.git
     cd subnet_scanner
     ```
 

@@ -8,6 +8,7 @@ use indicatif::{ProgressBar, ProgressStyle};
 use ipnet::IpNet;
 use rayon::prelude::*;
 use reqwest::Proxy;
+use dns_lookup::lookup_addr;
 use serde::{Deserialize, Serialize};
 use std::net::{IpAddr, SocketAddr, TcpStream};
 use std::path::PathBuf;
@@ -30,6 +31,8 @@ struct GeoLocationResponse {
 struct ProxyResult {
     #[serde(rename = "IP Address")]
     ip_address: IpAddr,
+    #[serde(rename = "Hostname")]
+    hostname: String,
     #[serde(rename = "Response Time (ms)")]
     response_time_ms: u128,
     #[serde(rename = "Location")]
@@ -229,8 +232,11 @@ async fn test_proxy(addr: SocketAddr, timeout_sec: u64) -> Result<ProxyResult, (
         if geo_info.status == "success" {
             let city = geo_info.city.unwrap_or_else(|| "Unknown".to_string());
             let country = geo_info.country.unwrap_or_else(|| "Unknown".to_string());
+
+            let hostname = lookup_addr(&addr.ip()).unwrap_or_else(|_| "Unknown".to_string());
             Ok(ProxyResult {
-                ip_address: addr.ip(), // Store only the IP address
+                ip_address: addr.ip(),
+                hostname: hostname,
                 response_time_ms: response_time.as_millis(),
                 location: format!("{}, {}", city, country),
             })
@@ -247,6 +253,7 @@ fn display_results(results: &[ProxyResult]) {
     table.load_preset(UTF8_FULL).set_header(vec![
         "Rank",
         "IP Address",
+        "Hostname",
         "Response Time",
         "Location",
     ]);
@@ -255,6 +262,7 @@ fn display_results(results: &[ProxyResult]) {
         table.add_row(vec![
             Cell::new(i + 1),
             Cell::new(result.ip_address.to_string()),
+            Cell::new(&result.hostname),
             Cell::new(format!("{} ms", result.response_time_ms)),
             Cell::new(&result.location),
         ]);
