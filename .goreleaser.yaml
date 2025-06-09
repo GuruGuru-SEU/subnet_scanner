@@ -8,14 +8,13 @@ builds:
   - id: "subnet_scanner-build"
     builder: rust
     targets:
-      - "x86_64-apple-darwin"
       - "x86_64-pc-windows-gnu"
       - "aarch64-apple-darwin"
       - "x86_64-unknown-linux-musl"
       - "aarch64-unknown-linux-musl"
 
 nfpms:
-  - builds:
+  - ids:
       - "subnet_scanner-build"
     vendor: GuruGuru-SEU
     homepage: "https://github.com/GuruGuru-SEU/subnet_scanner"
