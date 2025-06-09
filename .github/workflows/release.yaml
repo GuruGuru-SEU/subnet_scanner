@@ -30,6 +30,10 @@ jobs:
         #   components: rustfmt
       # More assembly might be required: Docker logins, GPG, etc.
       # It all depends on your needs.
+      - name: Set up MinGW
+        uses: egor-tensin/setup-mingw@v2
+        with:
+          platform: x64
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:

@@ -4,13 +4,11 @@ before:
   hooks:
     - rustup default stable
     - cargo install --locked cargo-zigbuild
-    - sudo apt install mingw-w64 -y
 builds:
   - id: "subnet_scanner-build"
     builder: rust
     targets:
       - "x86_64-pc-windows-gnu"
-      - "aarch64-apple-darwin"
       - "x86_64-unknown-linux-musl"
       - "aarch64-unknown-linux-musl"
 
